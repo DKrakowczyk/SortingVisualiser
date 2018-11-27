@@ -13,15 +13,22 @@ import javax.swing.JFrame;
  */
 public class SortingVisualiser {
 
-    /**
-     * @param args the command line arguments
-     */
+    static JFrame window = new JFrame("Sorting Visualiser");;
+    
     public static void main(String[] args) {
-        JFrame window = new JFrame("Sorting Visualiser");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);              
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
+        window.setBounds(0,0,1020,600);
         window.setContentPane(new Visualiser());
-  
         window.setVisible(true);
+    }
+    
+    int getWidth()
+    {
+        return window.getBounds().width;
+    }
+    int getHeight()
+    {
+        return window.getBounds().height;
     }
     
 }
