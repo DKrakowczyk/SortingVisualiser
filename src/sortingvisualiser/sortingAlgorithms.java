@@ -76,19 +76,20 @@ public class sortingAlgorithms {
         int n = array.length;
         for (int i = 1; i < n - 1; ++i) {
             int tmp = array[i].getValue();
-            int k = i +1;
-            while (k >= 0 && tmp < array[k].getValue()) {
-                
-                array[k].setinUse();
-                array[k - 1] = array[k];
-                k = k-1;
+            int k = i - 1;
+            array[i].setinUse();
+
+            while (k > 0 && tmp < array[k].getValue()) {
+
+                array[k + 1].setValue(array[k].getValue());
+                k = k - 1;
+
+                array[k + 1].setValue(tmp);
                 TimeUnit.MILLISECONDS.sleep(1);
-                array[k].notinUse();
-                array[k-1].notinUse();
-                v.repaint();
-                
+
             }
-            array[k+1].setValue(tmp);
+            array[i].notinUse();
+            v.repaint();
         }
         v.insertion = false;
     }
