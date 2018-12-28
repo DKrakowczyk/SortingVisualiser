@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortingvisualiser;
 
+import Alghoritms.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -21,25 +17,21 @@ import javax.swing.*;
 public class Visualiser extends JPanel implements Runnable {
 
     SortingVisualiser sv = new SortingVisualiser();
-    public boolean running, randomizing, sorting, bubble, bubbleTwo,insertion;
+    public boolean running, shuffling, sorting, BubbleSort,BubbleSortI, BubbleSortD, QuickSort, InsertionSort, MergeSort;
     private Thread thread;
     private int ticks = 0;
     toSort[] array;
     private movementHandler key;
     int BAR_X = 0;
-    sortingAlgorithms sA;
-
     public Visualiser() {
         setBackground(Color.GRAY);
         array = new toSort[500];
         key = new movementHandler();
-        bubble = false;bubbleTwo=false;insertion=false;
-        randomizing = false;
         setFocusable(true);
         addKeyListener(key);
-        sA = new sortingAlgorithms();
         fillArray();
         start();
+        
     }
 
     public void fillArray() {
@@ -63,7 +55,7 @@ public class Visualiser extends JPanel implements Runnable {
             array[rand].notinUse();
             repaint();
         }
-        randomizing = false;
+        shuffling = false;
     }
 
     public void start() {
@@ -97,21 +89,29 @@ public class Visualiser extends JPanel implements Runnable {
     private void loop() throws InterruptedException {
         ticks++;
         if (ticks > 200000) {
-            if (randomizing) {
+            if (shuffling) {
                 randomize();
             }
-
-            if (bubble) {
-                sA.bubbleSort(array, this);
+            if (BubbleSort) {
+                Factory.getAlgorithm(1).sort(array, this);
+            }
+            if(BubbleSortI){
+                
+            }
+            if(BubbleSortD){
+                
+            }
+            if (QuickSort){
+                Factory.getAlgorithm(2).sort(array, this);
+                Factory.getAlgorithm(0).checkSorted(array, this);
+            }
+            if(InsertionSort){
+                
+            }
+            if(MergeSort){
+                
             }
             
-            if(bubbleTwo){
-                sA.bubbleSortTwo(array, this);
-            }
-            
-            if(insertion){
-                sA.insertionSort(array, this);
-            }
             ticks = 0;
         }
     }
@@ -121,21 +121,34 @@ public class Visualiser extends JPanel implements Runnable {
         @Override
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()) {
-                case KeyEvent.VK_R:
-                    randomizing = true;
-                    System.out.println(randomizing);
+                case KeyEvent.VK_0:
+                    shuffling = true;
                     break;
-                case KeyEvent.VK_B:
-                    bubble = true;
-                    System.out.println(randomizing);
+                case KeyEvent.VK_1:
+                    BubbleSort = true;
                     break;
-                case KeyEvent.VK_N:
-                    bubbleTwo = true;
-                    System.out.println(randomizing);
+                case KeyEvent.VK_2:
+                    BubbleSortI = true;
                     break;
-                case KeyEvent.VK_L:
-                    insertion = true;
-                    System.out.println(randomizing);
+                case KeyEvent.VK_3:
+                    BubbleSortD = true;
+                    break;
+                case KeyEvent.VK_4:
+                    QuickSort = true;
+                    break;
+                case KeyEvent.VK_5:
+                    InsertionSort = true;
+                    break;
+                case KeyEvent.VK_6:
+                    MergeSort = true;
+                    break;
+                case KeyEvent.VK_S:
+                    BubbleSort = false;
+                    BubbleSortI = false;
+                    BubbleSortD = false;
+                    QuickSort = false;
+                    InsertionSort = false;
+                    MergeSort = false;
                     break;
             }
         }

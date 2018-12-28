@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortingvisualiser;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -15,20 +10,26 @@ import java.util.concurrent.TimeUnit;
 
 /**
  *
- * @author Dawid
+ * @author DKrakowczyk
+ * 
+ * Each bar is an object
  */
 public class toSort {
     int x, height;
     boolean inUse,sorted;
-    SortingVisualiser sv = new SortingVisualiser();
-    int W_HEIGHT = sv.getHeight()-40;
+    SortingVisualiser sv;
+    int W_HEIGHT; // window height
+    
     public toSort(int x, int height){
-        this.x = x;
-        this.height = height;
+        this.x = x; //x coordinate for the bar 
+        this.height = height; //height of the bar
         inUse = false;
+        sorted = false;
+        sv = new SortingVisualiser();
+        W_HEIGHT = sv.getHeight()-40;
     }
     public void draw(Graphics g){
-         g.setColor(new Color(50, 50, 50));
+        g.setColor(new Color(50, 50, 50));
         if(inUse)
         g.setColor(Color.red);
         
