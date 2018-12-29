@@ -4,6 +4,7 @@ import Alghoritms.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -17,28 +18,32 @@ import javax.swing.*;
 public class Visualiser extends JPanel implements Runnable {
 
     SortingVisualiser sv = new SortingVisualiser();
-    public boolean running, shuffling, sorting, BubbleSort,BubbleSortI, BubbleSortD, QuickSort, InsertionSort, MergeSort, menu;
+    public boolean running, shuffling, sorted, BubbleSort,BubbleSortI, BubbleSortD, QuickSort, InsertionSort, MergeSort, menu;
     private Thread thread;
     private int ticks = 0;
     toSort[] array;
+    toSort[] arrayCompare;
     private movementHandler key;
     int BAR_X = 0;
     public Visualiser() {
         setBackground(Color.GRAY);
         array = new toSort[500];
+        arrayCompare = new toSort[500];
         key = new movementHandler();
         setFocusable(true);
         addKeyListener(key);
         fillArray();
         start();
-        
+        sorted = true;
     }
 
     public void fillArray() {
         for (int i = 0; i < array.length; i++) {
             array[i] = new toSort(BAR_X, i);
+            arrayCompare[i] = new toSort(BAR_X, i);
             BAR_X += 2;
         }
+        sorted = true;
     }
 
     public void randomize() throws InterruptedException {
@@ -50,7 +55,7 @@ public class Visualiser extends JPanel implements Runnable {
             array[rand].setinUse();
             array[i].setValue(array[rand].getValue());
             array[rand].setValue(tmp);
-            TimeUnit.MILLISECONDS.sleep(5);
+            TimeUnit.MILLISECONDS.sleep(3);
             array[i].notinUse();
             array[rand].notinUse();
             repaint();
@@ -58,6 +63,19 @@ public class Visualiser extends JPanel implements Runnable {
         shuffling = false;
     }
 
+    private void checkSorted(){
+        int [] array1 = new int[500];
+        int [] array2 = new int [500];
+         for (int i = 0; i < array.length-1; i++) {
+          array1[i] = i;
+        }
+        for(int i =0; i<array.length-1;i++){
+            array2[i] = array[i].getValue();
+        }
+        sorted = Arrays.equals(array1, array2);
+        
+        
+    }
     public void start() {
         running = true;
         thread = new Thread(this, "Visualiser");
@@ -142,6 +160,8 @@ public class Visualiser extends JPanel implements Runnable {
     private void loop() throws InterruptedException {
         ticks++;
         if (ticks > 200000) {
+            checkSorted();
+            System.out.println(sorted);
             if (shuffling) {
                 randomize();
             }
@@ -157,6 +177,8 @@ public class Visualiser extends JPanel implements Runnable {
             if (QuickSort){
                 Factory.getAlgorithm(2).sort(array, this);
                 
+               
+        
             }
             if(InsertionSort){
                 
