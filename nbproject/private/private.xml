@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Dawid/Documents/NetBeansProjects/SortingVisualiser/src/Alghoritms/QuickSort.java</file>
+            <file>file:/C:/Users/Dawid/Documents/NetBeansProjects/SortingVisualiser/src/Alghoritms/BubbleSort.java</file>
+            <file>file:/C:/Users/Dawid/Documents/NetBeansProjects/SortingVisualiser/src/sortingvisualiser/Visualiser.java</file>
+            <file>file:/C:/Users/Dawid/Documents/NetBeansProjects/SortingVisualiser/src/Alghoritms/Factory.java</file>
+            <file>file:/C:/Users/Dawid/Documents/NetBeansProjects/SortingVisualiser/src/sortingvisualiser/SortingVisualiser.java</file>
+            <file>file:/C:/Users/Dawid/Documents/NetBeansProjects/SortingVisualiser/src/Alghoritms/FisherYates.java</file>
+        </group>
     </open-files>
 </project-private>

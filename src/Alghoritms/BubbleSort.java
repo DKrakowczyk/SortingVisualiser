@@ -28,7 +28,7 @@ public class BubbleSort implements ISortingAlgorithm{
                     array[j].setValue(array[j + 1].getValue());
                     array[j + 1].setValue(tmp);
 
-                    TimeUnit.NANOSECONDS.sleep(10);
+                    TimeUnit.NANOSECONDS.sleep(1);
                     array[j].notinUse();
                     array[j + 1].notinUse();
                     v.repaint();

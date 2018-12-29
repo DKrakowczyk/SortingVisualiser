@@ -17,9 +17,9 @@ public class QuickSort implements ISortingAlgorithm{
 
     @Override
     public void sort(toSort[] array, Visualiser v) throws InterruptedException {
-        v.QuickSort = true;
+        
         quickSort(array,v,0,array.length-1);
-        checkSorted(array,v);
+       
         
     }
 
@@ -56,7 +56,7 @@ public class QuickSort implements ISortingAlgorithm{
                 array[i].setinUse();
                 array[j].setValue(tmp);
                 
-                TimeUnit.MILLISECONDS.sleep(1);
+                TimeUnit.MILLISECONDS.sleep(10);
                 array[i].notinUse();
                 array[j].notinUse();
                 i++;

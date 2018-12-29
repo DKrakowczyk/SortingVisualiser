@@ -17,7 +17,7 @@ import javax.swing.*;
 public class Visualiser extends JPanel implements Runnable {
 
     SortingVisualiser sv = new SortingVisualiser();
-    public boolean running, shuffling, sorting, BubbleSort,BubbleSortI, BubbleSortD, QuickSort, InsertionSort, MergeSort;
+    public boolean running, shuffling, sorting, BubbleSort,BubbleSortI, BubbleSortD, QuickSort, InsertionSort, MergeSort, menu;
     private Thread thread;
     private int ticks = 0;
     toSort[] array;
@@ -80,9 +80,62 @@ public class Visualiser extends JPanel implements Runnable {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        if(menu){
+        g.setColor(Color.gray);
+        g.draw3DRect(10, 10, 600, 60, true);
+        g.setFont(new Font("Arial", Font.PLAIN, 15));
+        g.setColor(Color.black);
+        if (shuffling) {
+            g.setColor(new Color(2781744));
+        }
+        g.drawString("0 - Shuffle", 15, 30);
+        g.setColor(Color.black);
+        if (BubbleSort) {
+            g.setColor(new Color(2781744));
+        }
+        g.drawString("1 - Bubble sort I", 15, 45);
+        g.setColor(Color.black);
+        if (BubbleSortI) {
+            g.setColor(new Color(2781744));
+        }
+        g.drawString("2 - Bubble sort II", 15, 60);
+        g.setColor(Color.black);
+        
+        if (BubbleSortD) {
+            g.setColor(new Color(2781744));
+        }
+        g.drawString("3 - Bubble Sort III", 140, 30);
+        g.setColor(Color.black);
+        if (QuickSort) {
+            g.setColor(new Color(2781744));
+        }
+        g.drawString("4 - Quick sort", 140, 45);
+        g.setColor(Color.black);
+        if (InsertionSort) {
+            g.setColor(new Color(2781744));
+        }
+        g.drawString("5 - Insertion sort", 140, 60);
+        g.setColor(Color.black);
+        if (MergeSort) {
+            g.setColor(new Color(2781744));
+        }
+        g.drawString("6 - Merge sort", 265, 45);
+        g.setColor(Color.black);
+        }
+        else
+        {
+        g.setColor(Color.gray);
+        g.draw3DRect(10, 10, 70, 30, true);
+        g.setFont(new Font("Arial", Font.PLAIN, 15));
+        g.setColor(Color.black);
+        g.drawString("M - Menu", 15, 30);
+   
+        }
+        // Displaying the array
         for (int i = 0; i < array.length; i++)
             array[i].draw(g);
+        
+        
         
     }
 
@@ -103,7 +156,7 @@ public class Visualiser extends JPanel implements Runnable {
             }
             if (QuickSort){
                 Factory.getAlgorithm(2).sort(array, this);
-                Factory.getAlgorithm(0).checkSorted(array, this);
+                
             }
             if(InsertionSort){
                 
@@ -123,23 +176,65 @@ public class Visualiser extends JPanel implements Runnable {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_0:
                     shuffling = true;
+                    BubbleSort = false;
+                    BubbleSortI = false;
+                    BubbleSortD = false;
+                    QuickSort = false;
+                    InsertionSort = false;
+                    MergeSort = false;
                     break;
                 case KeyEvent.VK_1:
+                    shuffling = false;
                     BubbleSort = true;
+                    BubbleSortI = false;
+                    BubbleSortD = false;
+                    QuickSort = false;
+                    InsertionSort = false;
+                    MergeSort = false;
                     break;
                 case KeyEvent.VK_2:
+                    shuffling = false;
+                    BubbleSort = false;
                     BubbleSortI = true;
+                    BubbleSortD = false;
+                    QuickSort = false;
+                    InsertionSort = false;
+                    MergeSort = false;
                     break;
                 case KeyEvent.VK_3:
+                    shuffling = false;
+                    BubbleSort = false;
+                    BubbleSortI = false;
                     BubbleSortD = true;
+                    QuickSort = false;
+                    InsertionSort = false;
+                    MergeSort = false;
                     break;
                 case KeyEvent.VK_4:
+                    shuffling = false;
+                    BubbleSort = false;
+                    BubbleSortI = false;
+                    BubbleSortD = false;
                     QuickSort = true;
+                    InsertionSort = false;
+                    MergeSort = false;
                     break;
                 case KeyEvent.VK_5:
+                    shuffling = false;
+                    BubbleSort = false;
+                    BubbleSortI = false;
+                    BubbleSortD = false;
+                    QuickSort = false;
                     InsertionSort = true;
+                    MergeSort = false;
                     break;
                 case KeyEvent.VK_6:
+                    shuffling = false;
+                    BubbleSort = false;
+                    BubbleSortI = false;
+                    BubbleSortD = false;
+                    QuickSort = false;
+                    InsertionSort = false;
                     MergeSort = true;
                     break;
                 case KeyEvent.VK_S:
@@ -149,6 +244,10 @@ public class Visualiser extends JPanel implements Runnable {
                     QuickSort = false;
                     InsertionSort = false;
                     MergeSort = false;
+                    break;
+                case KeyEvent.VK_M:
+                    menu = !menu;
+                    repaint();
                     break;
             }
         }
