@@ -13,15 +13,32 @@ public class Factory {
 
     public static ISortingAlgorithm getAlgorithm(int i) {
 
-        if (i == 0) {
+        switch(i){
+            case 0:
             return new FisherYates();
-        } else if (i == 1) {
-            return new BubbleSort();
-        } else if (i==2){
-            return new QuickSort();
+            case 1:
+                return new BubbleSort();
+            case 2:
+                return new BubbleSortI();
+            case 3:
+                return new BubbleSortD();
+            case 4:
+                return new QuickSort();
+            case 5:
+                return new InsertionSort();
+            case 6:
+                return new MergeSort();
         }
-        else {
-            return null;
-        }
+        return null;
+//        if (i == 0) {
+//            return new FisherYates();
+//        } else if (i == 1) {
+//            return new BubbleSort();
+//        } else if (i==2){
+//            return new QuickSort();
+//        }
+//        else {
+//            return null;
+//        }
     }
 }

@@ -19,8 +19,7 @@ public class QuickSort implements ISortingAlgorithm{
     public void sort(toSort[] array, Visualiser v) throws InterruptedException {
         
          if(!v.sorted){
-         
-        quickSort(array,v,0,array.length-1);
+            quickSort(array,v,0,array.length-1);
          }
          else{
              checkSorted(array, v);

@@ -5,7 +5,6 @@
  */
 package Alghoritms;
 
-import Alghoritms.ISortingAlgorithm;
 import java.util.concurrent.TimeUnit;
 import sortingvisualiser.Visualiser;
 import sortingvisualiser.toSort;
@@ -14,30 +13,27 @@ import sortingvisualiser.toSort;
  *
  * @author Dawid
  */
-public class BubbleSort implements ISortingAlgorithm{
+public class InsertionSort implements ISortingAlgorithm{
 
     @Override
     public void sort(toSort[] array, Visualiser v) throws InterruptedException {
-            for (int i = 0; i < array.length - 1; i++) {
-            for (int j = 0; j < array.length - 1; j++) {
-
-                if (array[j].getValue() > array[j + 1].getValue()) {
-                    int tmp = array[j].getValue();
-                    array[j].setinUse();
-                    array[j + 1].setinUse();
-                    array[j].setValue(array[j + 1].getValue());
-                    array[j + 1].setValue(tmp);
-
-                    TimeUnit.MILLISECONDS.sleep(10);
-                    array[j].notinUse();
-                    array[j + 1].notinUse();
-                    v.repaint();
-                }
+        int n = array.length;
+        for (int i = 1; i < n; ++i) {
+            int tmp = array[i].getValue();
+            int k = i - 1;
+            
+            while (k >= 0 && array[k].getValue() > tmp) {
+                array[k + 1].setinUse();
+                array[k + 1].setValue(array[k].getValue());
+                TimeUnit.MILLISECONDS.sleep(1);
+                v.repaint();
+                array[k + 1].notinUse();
+                k = k - 1;
             }
+            array[k + 1].setValue(tmp);
         }
-        checkSorted(array,v);
-
-        v.BubbleSort = false;
+        
+        v.InsertionSort = false;
     }
 
     @Override

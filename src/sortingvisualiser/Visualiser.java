@@ -169,22 +169,19 @@ public class Visualiser extends JPanel implements Runnable {
                 Factory.getAlgorithm(1).sort(array, this);
             }
             if(BubbleSortI){
-                
+                Factory.getAlgorithm(2).sort(array, this);
             }
             if(BubbleSortD){
-                
+                Factory.getAlgorithm(3).sort(array, this);
             }
             if (QuickSort){
-                Factory.getAlgorithm(2).sort(array, this);
-                
-               
-        
+                Factory.getAlgorithm(4).sort(array, this);
             }
             if(InsertionSort){
-                
+                Factory.getAlgorithm(5).sort(array, this);
             }
             if(MergeSort){
-                
+                Factory.getAlgorithm(6).sort(array, this);
             }
             
             ticks = 0;
