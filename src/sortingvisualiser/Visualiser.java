@@ -18,7 +18,7 @@ import javax.swing.*;
 public class Visualiser extends JPanel implements Runnable {
 
     SortingVisualiser sv = new SortingVisualiser();
-    public boolean running, shuffling, sorted, BubbleSort,BubbleSortI, BubbleSortD, QuickSort, InsertionSort, MergeSort, menu;
+    public boolean running, shuffling, sorted, BubbleSort,CoctailSort, CombSort, QuickSort, InsertionSort, RadixSort, menu;
     private Thread thread;
     private int ticks = 0;
     toSort[] array;
@@ -111,18 +111,18 @@ public class Visualiser extends JPanel implements Runnable {
         if (BubbleSort) {
             g.setColor(new Color(2781744));
         }
-        g.drawString("1 - Bubble sort I", 15, 45);
+        g.drawString("1 - Bubble sort", 15, 45);
         g.setColor(Color.black);
-        if (BubbleSortI) {
+        if (CoctailSort) {
             g.setColor(new Color(2781744));
         }
-        g.drawString("2 - Bubble sort II", 15, 60);
+        g.drawString("2 - Coctail sort", 15, 60);
         g.setColor(Color.black);
         
-        if (BubbleSortD) {
+        if (CombSort) {
             g.setColor(new Color(2781744));
         }
-        g.drawString("3 - Bubble Sort III", 140, 30);
+        g.drawString("3 - Comb sort", 140, 30);
         g.setColor(Color.black);
         if (QuickSort) {
             g.setColor(new Color(2781744));
@@ -134,10 +134,10 @@ public class Visualiser extends JPanel implements Runnable {
         }
         g.drawString("5 - Insertion sort", 140, 60);
         g.setColor(Color.black);
-        if (MergeSort) {
+        if (RadixSort) {
             g.setColor(new Color(2781744));
         }
-        g.drawString("6 - Merge sort", 265, 45);
+        g.drawString("6 - Radix sort", 265, 30);
         g.setColor(Color.black);
         }
         else
@@ -168,10 +168,10 @@ public class Visualiser extends JPanel implements Runnable {
             if (BubbleSort) {
                 Factory.getAlgorithm(1).sort(array, this);
             }
-            if(BubbleSortI){
+            if(CoctailSort){
                 Factory.getAlgorithm(2).sort(array, this);
             }
-            if(BubbleSortD){
+            if(CombSort){
                 Factory.getAlgorithm(3).sort(array, this);
             }
             if (QuickSort){
@@ -180,7 +180,7 @@ public class Visualiser extends JPanel implements Runnable {
             if(InsertionSort){
                 Factory.getAlgorithm(5).sort(array, this);
             }
-            if(MergeSort){
+            if(RadixSort){
                 Factory.getAlgorithm(6).sort(array, this);
             }
             
@@ -196,73 +196,73 @@ public class Visualiser extends JPanel implements Runnable {
                 case KeyEvent.VK_0:
                     shuffling = true;
                     BubbleSort = false;
-                    BubbleSortI = false;
-                    BubbleSortD = false;
+                    CoctailSort = false;
+                    CombSort = false;
                     QuickSort = false;
                     InsertionSort = false;
-                    MergeSort = false;
+                    RadixSort = false;
                     break;
                 case KeyEvent.VK_1:
                     shuffling = false;
                     BubbleSort = true;
-                    BubbleSortI = false;
-                    BubbleSortD = false;
+                    CoctailSort = false;
+                    CombSort = false;
                     QuickSort = false;
                     InsertionSort = false;
-                    MergeSort = false;
+                    RadixSort = false;
                     break;
                 case KeyEvent.VK_2:
                     shuffling = false;
                     BubbleSort = false;
-                    BubbleSortI = true;
-                    BubbleSortD = false;
+                    CoctailSort = true;
+                    CombSort = false;
                     QuickSort = false;
                     InsertionSort = false;
-                    MergeSort = false;
+                    RadixSort = false;
                     break;
                 case KeyEvent.VK_3:
                     shuffling = false;
                     BubbleSort = false;
-                    BubbleSortI = false;
-                    BubbleSortD = true;
+                    CoctailSort = false;
+                    CombSort = true;
                     QuickSort = false;
                     InsertionSort = false;
-                    MergeSort = false;
+                    RadixSort = false;
                     break;
                 case KeyEvent.VK_4:
                     shuffling = false;
                     BubbleSort = false;
-                    BubbleSortI = false;
-                    BubbleSortD = false;
+                    CoctailSort = false;
+                    CombSort = false;
                     QuickSort = true;
                     InsertionSort = false;
-                    MergeSort = false;
+                    RadixSort = false;
                     break;
                 case KeyEvent.VK_5:
                     shuffling = false;
                     BubbleSort = false;
-                    BubbleSortI = false;
-                    BubbleSortD = false;
+                    CoctailSort = false;
+                    CombSort = false;
                     QuickSort = false;
                     InsertionSort = true;
-                    MergeSort = false;
+                    RadixSort = false;
                     break;
                 case KeyEvent.VK_6:
                     shuffling = false;
                     BubbleSort = false;
-                    BubbleSortI = false;
-                    BubbleSortD = false;
+                    CoctailSort = false;
+                    CombSort = false;
                     QuickSort = false;
                     InsertionSort = false;
-                    MergeSort = true;
+                    RadixSort = true;
                     break;
                 case KeyEvent.VK_S:
                     BubbleSort = false;
-                    BubbleSortI = false;
-                    BubbleSortD = false;
+                    CoctailSort = false;
+                    CombSort = false;
                     QuickSort = false;
                     InsertionSort = false;
-                    MergeSort = false;
+                    RadixSort = false;
                     break;
                 case KeyEvent.VK_M:
                     menu = !menu;

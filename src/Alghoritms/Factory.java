@@ -19,15 +19,15 @@ public class Factory {
             case 1:
                 return new BubbleSort();
             case 2:
-                return new BubbleSortI();
+                return new CoctailSort();
             case 3:
-                return new BubbleSortD();
+                return new CombSort();
             case 4:
                 return new QuickSort();
             case 5:
                 return new InsertionSort();
             case 6:
-                return new MergeSort();
+                return new RadixSort();
         }
         return null;
 //        if (i == 0) {

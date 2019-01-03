@@ -13,33 +13,43 @@ import sortingvisualiser.toSort;
  *
  * @author Dawid
  */
-public class BubbleSortI implements ISortingAlgorithm{
+public class CombSort implements ISortingAlgorithm{
 
     @Override
     public void sort(toSort[] array, Visualiser v) throws InterruptedException {
-        boolean nextIter = true;
-        do {
-            nextIter = false;
-            for (int i = 0; i < array.length - 1; i++) {
-                if (array[i].getValue() > array[i + 1].getValue()) {
+        int gap = array.length;
+        boolean swapped = true;
+        
+        while(gap != 1 || swapped){
+            gap = findGap(gap);
+            swapped = false;
+            
+            for(int i=0;i<array.length-gap;i++){
+                if(array[i].getValue() > array[i+gap].getValue()){
                     int tmp = array[i].getValue();
                     array[i].setinUse();
-                    array[i+1].setinUse();
-                    array[i].setValue(array[i+1].getValue());
-                    array[i + 1].setValue(tmp);
+                    array[i+gap].setinUse();
+                    array[i].setValue(array[i+gap].getValue());
+                    array[i+gap].setValue(tmp);
                     TimeUnit.MILLISECONDS.sleep(1);
                     v.repaint();
                     array[i].notinUse();
-                    array[i+1].notinUse();
-                    nextIter = true;
+                    array[i+gap].notinUse();
+                    swapped = true;
                 }
             }
-        } while (nextIter);
-
+        }
+        
         checkSorted(array,v);
-        v.BubbleSortI = false;
+        v.CombSort = false;
     }
-
+    private int findGap(int gap){
+        gap = (gap*8)/12;
+        if(gap<1)
+            return 1;
+        return gap;
+    }
+    
     @Override
     public void checkSorted(toSort[] array, Visualiser v) throws InterruptedException {
         for (int k = 0; k < array.length - 1; k++) {
