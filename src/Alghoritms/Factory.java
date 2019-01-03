@@ -28,17 +28,12 @@ public class Factory {
                 return new InsertionSort();
             case 6:
                 return new RadixSort();
+            case 7:
+                return new ShellSort();
+            case 8:
+                return new PigeonHole();
         }
         return null;
-//        if (i == 0) {
-//            return new FisherYates();
-//        } else if (i == 1) {
-//            return new BubbleSort();
-//        } else if (i==2){
-//            return new QuickSort();
-//        }
-//        else {
-//            return null;
-//        }
+
     }
 }

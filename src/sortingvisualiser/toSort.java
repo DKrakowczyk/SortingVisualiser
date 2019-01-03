@@ -26,7 +26,7 @@ public class toSort {
         inUse = false;
         sorted = false;
         sv = new SortingVisualiser();
-        W_HEIGHT = sv.getHeight()-40;
+        W_HEIGHT = sv.getHeight()-49;
     }
     public void draw(Graphics g){
         g.setColor(new Color(50, 50, 50));

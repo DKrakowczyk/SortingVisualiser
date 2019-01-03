@@ -61,7 +61,7 @@ public class QuickSort implements ISortingAlgorithm{
                 array[i].setinUse();
                 array[j].setValue(tmp);
                 
-                TimeUnit.MILLISECONDS.sleep(10);
+                TimeUnit.MILLISECONDS.sleep(5);
                 array[i].notinUse();
                 array[j].notinUse();
                 i++;

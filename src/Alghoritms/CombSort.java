@@ -31,7 +31,7 @@ public class CombSort implements ISortingAlgorithm{
                     array[i+gap].setinUse();
                     array[i].setValue(array[i+gap].getValue());
                     array[i+gap].setValue(tmp);
-                    TimeUnit.MILLISECONDS.sleep(1);
+                    TimeUnit.MILLISECONDS.sleep(5);
                     v.repaint();
                     array[i].notinUse();
                     array[i+gap].notinUse();

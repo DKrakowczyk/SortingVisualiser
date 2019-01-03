@@ -18,7 +18,7 @@ import javax.swing.*;
 public class Visualiser extends JPanel implements Runnable {
 
     SortingVisualiser sv = new SortingVisualiser();
-    public boolean running, shuffling, sorted, BubbleSort,CoctailSort, CombSort, QuickSort, InsertionSort, RadixSort, menu;
+    public boolean running, shuffling, sorted, BubbleSort,CoctailSort, CombSort, QuickSort, InsertionSort, RadixSort, ShellSort,PigeonHole, menu;
     private Thread thread;
     private int ticks = 0;
     toSort[] array;
@@ -100,7 +100,7 @@ public class Visualiser extends JPanel implements Runnable {
         super.paintComponent(g);
         if(menu){
         g.setColor(Color.gray);
-        g.draw3DRect(10, 10, 600, 60, true);
+        g.draw3DRect(10, 10, 360, 60, true);
         g.setFont(new Font("Arial", Font.PLAIN, 15));
         g.setColor(Color.black);
         if (shuffling) {
@@ -138,6 +138,16 @@ public class Visualiser extends JPanel implements Runnable {
             g.setColor(new Color(2781744));
         }
         g.drawString("6 - Radix sort", 265, 30);
+        g.setColor(Color.black);
+        if (ShellSort) {
+            g.setColor(new Color(2781744));
+        }
+        g.drawString("7 - Shell sort", 265, 45);
+        g.setColor(Color.black);
+        if (PigeonHole) {
+            g.setColor(new Color(2781744));
+        }
+        g.drawString("8 - Pigeon sort", 265, 60);
         g.setColor(Color.black);
         }
         else
@@ -183,7 +193,12 @@ public class Visualiser extends JPanel implements Runnable {
             if(RadixSort){
                 Factory.getAlgorithm(6).sort(array, this);
             }
-            
+            if(ShellSort){
+                Factory.getAlgorithm(7).sort(array, this);
+            }
+            if(PigeonHole){
+                Factory.getAlgorithm(8).sort(array, this);
+            }
             ticks = 0;
         }
     }
@@ -201,6 +216,8 @@ public class Visualiser extends JPanel implements Runnable {
                     QuickSort = false;
                     InsertionSort = false;
                     RadixSort = false;
+                    ShellSort = false;
+                    PigeonHole = false;
                     break;
                 case KeyEvent.VK_1:
                     shuffling = false;
@@ -210,6 +227,8 @@ public class Visualiser extends JPanel implements Runnable {
                     QuickSort = false;
                     InsertionSort = false;
                     RadixSort = false;
+                    ShellSort = false;
+                    PigeonHole = false;
                     break;
                 case KeyEvent.VK_2:
                     shuffling = false;
@@ -219,6 +238,8 @@ public class Visualiser extends JPanel implements Runnable {
                     QuickSort = false;
                     InsertionSort = false;
                     RadixSort = false;
+                    ShellSort = false;
+                    PigeonHole = false;
                     break;
                 case KeyEvent.VK_3:
                     shuffling = false;
@@ -228,6 +249,8 @@ public class Visualiser extends JPanel implements Runnable {
                     QuickSort = false;
                     InsertionSort = false;
                     RadixSort = false;
+                    ShellSort = false;
+                    PigeonHole = false;
                     break;
                 case KeyEvent.VK_4:
                     shuffling = false;
@@ -237,6 +260,8 @@ public class Visualiser extends JPanel implements Runnable {
                     QuickSort = true;
                     InsertionSort = false;
                     RadixSort = false;
+                    ShellSort = false;
+                    PigeonHole = false;
                     break;
                 case KeyEvent.VK_5:
                     shuffling = false;
@@ -246,6 +271,8 @@ public class Visualiser extends JPanel implements Runnable {
                     QuickSort = false;
                     InsertionSort = true;
                     RadixSort = false;
+                    ShellSort = false;
+                    PigeonHole = false;
                     break;
                 case KeyEvent.VK_6:
                     shuffling = false;
@@ -255,6 +282,30 @@ public class Visualiser extends JPanel implements Runnable {
                     QuickSort = false;
                     InsertionSort = false;
                     RadixSort = true;
+                    ShellSort = false;
+                    PigeonHole = false;
+                    break;
+                case KeyEvent.VK_7:
+                    shuffling = false;
+                    BubbleSort = false;
+                    CoctailSort = false;
+                    CombSort = false;
+                    QuickSort = false;
+                    InsertionSort = false;
+                    RadixSort = false;
+                    ShellSort = true;
+                    PigeonHole = false;
+                    break;
+                case KeyEvent.VK_8:
+                    shuffling = false;
+                    BubbleSort = false;
+                    CoctailSort = false;
+                    CombSort = false;
+                    QuickSort = false;
+                    InsertionSort = false;
+                    RadixSort = false;
+                    ShellSort = false;
+                    PigeonHole = true;
                     break;
                 case KeyEvent.VK_S:
                     BubbleSort = false;
