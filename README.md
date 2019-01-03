@@ -5,7 +5,7 @@
 **Sorting Visualiser**  is an application that allows to visualize the operation of various implemented sorting algorithms.
 List of available algorithms:
 
- - Bubble sort (1)
+ - [Bubble sort (1)](####%20Bubble%20sort)
  - Coctail sort (2)
  - Comb sort (3)
  - Quick sort (4)
